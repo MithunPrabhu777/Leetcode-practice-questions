@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "treeify": "^1.1.0"
+  },
+  "name": "tree",
+  "version": "1.0.0",
+  "main": "BST.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

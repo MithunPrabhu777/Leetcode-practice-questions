@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body{
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10%;
+    background-color: #faebd7;
+}
+
+.search {
+    cursor: pointer;
+}
+
+.navigation {
+    width: 30%;
+    /* background-color: azure; */
+}
+
+.navigation__list {
+    display: flex;
+    /* background-color: aqua; */
+    list-style: none;
+}
+
+.navigation__list-1,
+.navigation__list-2,
+.navigation__list-3,
+.navigation__list-4 {
+margin-right: 40px;
+}
