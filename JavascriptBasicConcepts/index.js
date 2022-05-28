@@ -74,18 +74,26 @@ and this is not applicable to function expression because we are assigning funct
 // console.log(radiusList.map(diameterOfCircle));
 // Arrow functions
 
-var average = function (salary) {
-  salary.sort((a, b) => a - b);
+// var average = function (salary) {
+//   salary.sort((a, b) => a - b);
 
-  salary.splice(0, 1);
-  salary.splice(salary.length - 1, 1);
+//   salary.splice(0, 1);
+//   salary.splice(salary.length - 1, 1);
 
-  let totalSum = salary.reduce((acc, ele) => {
-    return acc + ele;
-  }, 0);
+//   let totalSum = salary.reduce((acc, ele) => {
+//     return acc + ele;
+//   }, 0);
 
-  return totalSum / salary.length;
-};
+//   return totalSum / salary.length;
+// };
 
-let salary = [4000, 3000, 1000, 2000];
-console.log(average(salary));
+// let salary = [4000, 3000, 1000, 2000];
+// console.log(average(salary));
+
+// let and const are block scoped
+
+x = 5;
+
+let x;
+
+console.log(x);

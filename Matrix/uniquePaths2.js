@@ -3,8 +3,6 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
     const n = obstacleGrid[0].length;
     const memo = new Map();
     
-    return topDown(m - 1, n - 1);
-    
     function topDown(row, col) {
         // base case
         if (row < 0 || col < 0 || obstacleGrid[row][col] === 1) return 0;
@@ -18,6 +16,8 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
         
         return res;
     }
+
+    return topDown(m - 1, n - 1);
 };
 
 let obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]];
