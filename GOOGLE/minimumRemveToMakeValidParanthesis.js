@@ -12,11 +12,15 @@ var minRemoveToMakeValid = function (s) {
         }
     }
 
+
+
     for (let i of stack) stringArray[i] = "";
 
     return stringArray.join("");
+
 };
 
-Input: s = "lee(t(c)o)de)"
+let s = "lee(t(c)o)de)";
+console.log(minRemoveToMakeValid(s));
 Output: "lee(t(c)o)de"
 // Explanation: "lee(t(co)de)", "lee(t(c)ode)" would also be accepted.
