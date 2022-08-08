@@ -1,22 +1,28 @@
 var lengthOfLongestSubstring = function (s) {
-    let set = new Set();
-    
-    let longest = 0;
-    
-    let i=0,j=0;
-    
-    while(i < s.length && j < s.length){
-        if(!set.has(s[j])){
-            set.add(s[j]);
-            longest = Math.max(longest,j-i+1);
-            j++;
-        }else{
-            set.delete(s[i]);
-            i++;
+    let letterMap = new Map();
+
+    let [left, right, max] = [0, 0, 0];
+
+    while (right < s.length) {
+        let currentValue = s[right];
+
+        const canSlide = letterMap.has(currentValue);
+
+        if (canSlide) {
+            let rightValue = letterMap.get(currentValue) + 1;
+
+            left = Math.max(left, rightValue);
         }
+
+        let window = (right - left) + 1;
+
+        max = Math.max(max, window);
+        letterMap.set(currentValue, right);
+        right++;
+
     }
-    
-    return longest;
+
+    return max;
 };
 
 let s = "abcabcbb";
