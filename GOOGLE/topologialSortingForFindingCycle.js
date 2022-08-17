@@ -1,41 +1,41 @@
-//Couse Schedule
+var canFinish = function (numCourses, prerequisites) {
+    let adjacencyList = [];
+    let visited = [];
 
-var canFinish = function(numCourses, prerequisites) {
-    const adjList = []
-    const visit = []
-    construAdj()
+    adjacencyList = buildAdjList(prerequisites, adjacencyList);
+
     for (let i = 0; i < numCourses; i++) {
-        if (!dfs(i)) return false
+        if (!dfs(i, visited, adjacencyList)) return false;
     }
-    return true
-    
-    function dfs(i) {
-        // base case
-        if (visit[i]) return false
-        if (visit[i] === false) return true
-        
-        visit[i] = true
-        
-        for (const nei of adjList[i] ?? []) {
-            if (!dfs(nei)) return false
-        }
-        
-        visit[i] = false
-        return true
-    }
-    
-    function construAdj() {
-        for (const pre of prerequisites) {
-            if (!adjList[pre[1]]) adjList[pre[1]] = []
-            adjList[pre[1]].push(pre[0])
-        }
-    }
+
+    return true;
 };
 
-let numCourses = 2, prerequisites = [[1,0]];
-console.log(canFinish(numCourses,prerequisites));
+var dfs = function (startNode, visited, adjacencyList) {
+    if (visited[startNode]) return false;
 
+    if (visited[startNode] === false) return true;
 
-Output: true
-// Explanation: There are a total of 2 courses to take. 
-// To take course 1 you should have finished course 0. So it is possible.
+    visited[startNode] = true;
+
+    for (const nextNode of adjacencyList[startNode] ?? []) {
+        if (!dfs(nextNode, visited, adjacencyList)) return false;
+    }
+
+    visited[startNode] = false;
+
+    return true;
+
+}
+
+var buildAdjList = function (prerequisites, adjacencyList) {
+    for (let pos of prerequisites) {
+        if (!adjacencyList[pos[1]]) {
+            adjacencyList[pos[1]] = [];
+        }
+
+        adjacencyList[pos[1]].push(pos[0]);
+    }
+
+    return adjacencyList;
+}

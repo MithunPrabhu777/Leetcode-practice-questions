@@ -28,5 +28,5 @@ var exist = function (board, word) {
 };
 
 let board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]];
-word = "ABCB";
+word = "ABCCED";
 console.log(exist(board, word));
