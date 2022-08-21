@@ -23,5 +23,5 @@ var permuteUnique = function (nums) {
   return result;
 };
 
-let nums = [3, 3, 0, 3];
+let nums = [1, 2, 3];
 console.log(permuteUnique(nums));
