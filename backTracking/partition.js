@@ -1,30 +1,37 @@
-var partition = function (s) {
-  let result = [];
+function partition(s) {
+  let res = [];
+  let part = [];
 
-  function isPalindrome(s) {
-    return s.split("").reverse().join("") == s;
-  }
-
-  function backtrack(result, temp, index) {
-    if (index == s.length) {
-      result.push([...temp]);
+  function dfs(i) {
+    if (i >= s.length) {
+      res.push(part.slice());
       return;
     }
 
-    for (let i = index + 1; i <= s.length; i++) {
-      let target = s.substring(index, i);
-      if (isPalindrome(target)) {
-        temp.push(target);
-        backtrack(result, temp, i);
-        temp.pop();
+    for (let j = i; j < s.length; j++) {
+      if (isPali(s, i, j)) {
+        part.push(s.slice(i, j + 1));
+        dfs(j + 1);
+        part.pop();
       }
     }
   }
 
-  backtrack(result, [], 0);
+  dfs(0);
+  return res;
 
-  return result;
-};
+  function isPali(s, l, r) {
+    while (l < r) {
+      if (s[l] != s[r]) {
+        return false;
+      }
+      l = l + 1;
+      r = r - 1;
+    }
+    return true;
+  }
+}
 
 let s = "aab";
-partition(s);
+console.log(partition(s));
+Output: [["a", "a", "b"], ["aa", "b"]]
