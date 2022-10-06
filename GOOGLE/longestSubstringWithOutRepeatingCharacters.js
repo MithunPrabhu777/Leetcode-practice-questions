@@ -1,25 +1,25 @@
 var lengthOfLongestSubstring = function (s) {
-    let letterMap = new Map();
+    const letterCountMap = new Map();
 
+    // Destructuring assignment syntax is a JavaScript expression that pulls out values from array
+    // Here we are assigning initial values to variables
     let [left, right, max] = [0, 0, 0];
 
     while (right < s.length) {
-        let currentValue = s[right];
+        const currentValue = s[right];
+        const canSlide = letterCountMap.has(currentValue);
 
-        const canSlide = letterMap.has(currentValue);
-
+        // We can slide left pointer only when we find duplicate number from map
         if (canSlide) {
-            let rightValue = letterMap.get(currentValue) + 1;
-
-            left = Math.max(left, rightValue);
+            const rightSlide = letterCountMap.get(currentValue) + 1;
+            left = Math.max(left, rightSlide);
         }
 
-        let window = (right - left) + 1;
-
-        max = Math.max(max, window);
-        letterMap.set(currentValue, right);
+        // We are finding window from left to right of non repeating characters
+        const window = (right - left) + 1;
+        max = Math.max(window, max);
+        letterCountMap.set(currentValue, right);
         right++;
-
     }
 
     return max;
