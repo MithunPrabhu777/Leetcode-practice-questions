@@ -1,20 +1,13 @@
 const maxArea = (height) => {
-    let left = 0, right = height.length - 1;
-    let max = 0;
+    let [left, right, max] = [0, height.length - 1, 0];
 
     while (left < right) {
-        let currentSum, min;
-        if (height[left] < height[right]) {
-            min = height[left];
-            currentSum = min * (right - left);
-            left++;
+        max = Math.max(max, Math.min(height[left], height[right]) * (right - left));
+        if (height[right] > height[left]) {
+            left += 1;
         } else {
-            min = height[right];
-            currentSum = min * (right - left);
-            right--;
+            right -= 1;
         }
-
-        max = Math.max(currentSum, max);
     }
 
     return max;

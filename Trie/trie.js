@@ -4,7 +4,6 @@ let head = root;
 
 addWordToMap(word = "apple",root);
 addWordToMap(word = "app",root);
-addWordToMap(word = "anti-social",root);
 
 function addWordToMap(word,root){
     for(let char of word){
